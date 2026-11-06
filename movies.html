@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotive Cinema - Movie Library</title>
+    <!-- Load saved theme before the page shows (no flash) -->
+    <script>
+        try {
+            var t = localStorage.getItem('emotiveCinema_theme');
+            if (t === 'light') {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        } catch (e) {}
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <a href="index.html" class="logo">
+            <i class="fa-solid fa-film"></i> Emotive<span>Cinema</span>
+        </a>
+        <nav>
+            <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> Home</a>
+            <a href="movies.html" class="nav-link active"><i class="fa-solid fa-clapperboard"></i> Movies</a>
+            <a href="watchlist.html" class="nav-link"><i class="fa-solid fa-bookmark"></i> Watchlist (<span id="watchlist-count">0</span>)</a>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Switch day / night mode">
+                <i class="fa-solid fa-sun"></i>
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="filter-container">
+            <label class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="search-input" placeholder="Search for a movie...">
+            </label>
+
+            <div class="filter-options">
+                <select id="mood-filter">
+                    <option value="all">All Moods</option>
+                    <option value="happy">Happy &amp; Funny</option>
+                    <option value="thriller">Adrenaline &amp; Thriller</option>
+                    <option value="melancholy">Chill &amp; Melancholy</option>
+                    <option value="romantic">Romantic</option>
+                    <option value="scifi">Mind-Blowing Sci-Fi</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Movies Grid -->
+    <main class="main-container">
+        <h2 class="section-title">All Available Movies</h2>
+        <div class="movies-grid" id="movies-container"></div>
+    </main>
+
+    <!-- Trailer Modal -->
+    <div id="trailer-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" id="close-modal" aria-label="Close">&times;</button>
+            <div class="video-container">
+                <iframe id="trailer-iframe" src="" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Emotive Cinema &copy; 2026 - All rights reserved</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
